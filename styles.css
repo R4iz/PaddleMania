@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+#game-container {
+    width: 620px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+}
+
+canvas {
+    background-color: #ddd;
+    border: 2px solid #000;
+}
+
+#info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#score-highscore, #points-timer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#score, #points, #highscore, #timer {
+    font-size: 18px;
+    margin: 5px 10px;
+}
+
+#shop {
+    margin-top: 20px;
+}
+
+#buttons {
+    margin-top: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+#buyPaddle:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#options-menu, #stats-menu, #winning-screen, #game-over-screen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: none;
+    z-index: 1000;
+}
+
+#options-menu button, #stats-menu button, #winning-screen button, #game-over-screen button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#options-menu button:hover, #stats-menu button:hover, #winning-screen button:hover, #game-over-screen button:hover {
+    background-color: #45a049;
+}
+
+#winning-screen h2, #game-over-screen h2 {
+    margin-top: 0;
+}
+
+#winning-screen button {
+    background-color: #2196F3;
+}
+
+#winning-screen button:hover {
+    background-color: #1E88E5;
+}
+
+#game-over-screen button {
+    background-color: #4CAF50;
+}
+
+#game-over-screen button:hover {
+    background-color: #45a049;
+}
+
+#recap {
+    margin-top: 20px;
+    text-align: left;
+}
+
+/* Red buttons for closing */
+.close-button {
+    background-color: #f44336;
+}
+
+.close-button:hover {
+    background-color: #e53935;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaddleMania</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="mobile-warning" style="display: none;">
+        <h2>Spiel nicht verfügbar</h2>
+        <p>Dieses Spiel ist auf Mobilgeräten derzeit nicht spielbar. Bitte verwenden Sie ein Desktop-Gerät.</p>
+    </div>
+
+    <div id="game-container">
+        <h1>PaddleMania</h1>
+        <canvas id="gameCanvas" width="600" height="600"></canvas>
+        <div id="info">
+            <div id="score-highscore">
+                <p id="score">Score: 0</p>
+                <p id="highscore">Highscore: 0</p>
+            </div>
+            <div id="points-timer">
+                <p id="points">Punkte: 0</p>
+                <p id="timer">Zeit: 0s</p>
+            </div>
+        </div>
+        <div id="shop">
+            <button id="buyPaddle" class="button">Paddle vergrößern (100 Punkte)</button>
+        </div>
+        <div id="buttons">
+            <button id="openOptions" class="button">Optionen</button>
+            <button id="openStats" class="button">Statistik</button>
+        </div>
+        <div id="winning-screen" style="display: none;">
+            <h2>Du hast gewonnen!</h2>
+            <p>Gesamtzeit: <span id="total-time"></span>s</p>
+            <button class="button" onclick="document.location.reload()">Erneut spielen</button>
+            <button id="show-recap" class="button">Recap anzeigen</button>
+            <div id="recap" style="display: none;">
+                <p id="recapScore">Endscore: 0</p>
+                <p id="recapHighscore">Highscore: 0</p>
+                <p id="recapTotalBallsLost">Verlorene Bälle: 0</p>
+                <p id="recapTotalBlueBallsHit">Getroffene blaue Bälle: 0</p>
+                <p id="recapTotalRedBallsHit">Getroffene rote Bälle: 0</p>
+                <p id="recapTotalBallsHit">Getroffene Bälle gesamt: 0</p>
+            </div>
+        </div>
+        <div id="game-over-screen" style="display: none;">
+            <h2>GAME OVER</h2>
+            <button id="show-recap-game-over" class="button">Recap anzeigen</button>
+            <div id="recap-game-over" style="display: none;">
+                <p id="recapScoreGameOver">Endscore: 0</p>
+                <p id="recapHighscoreGameOver">Highscore: 0</p>
+                <p id="recapTotalBallsLostGameOver">Verlorene Bälle: 0</p>
+                <p id="recapTotalBlueBallsHitGameOver">Getroffene blaue Bälle: 0</p>
+                <p id="recapTotalRedBallsHitGameOver">Getroffene rote Bälle: 0</p>
+                <p id="recapTotalBallsHitGameOver">Getroffene Bälle gesamt: 0</p>
+            </div>
+            <button class="button" onclick="document.location.reload()">Erneut spielen</button>
+        </div>
+    </div>
+
+    <div id="options-menu" style="display: none;">
+        <h2>Optionen</h2>
+        <div>
+            <button id="audioSettings" class="button">Audio</button>
+            <button id="graphicsSettings" class="button">Grafik</button>
+        </div>
+        <div id="audio-menu" style="display: none;">
+            <h3>Audio Einstellungen</h3>
+            <label>
+                Hintergrundmusik
+                <input type="checkbox" id="backgroundMusic" />
+            </label>
+            <label>
+                Soundeffekte
+                <input type="checkbox" id="soundEffects" />
+            </label>
+            <label>
+                Lautstärke
+                <input type="range" id="volumeControl" min="0" max="100" value="50">
+            </label>
+        </div>
+        <div id="graphics-menu" style="display: none;">
+            <h3>Grafik Einstellungen</h3>
+            <label for="bgColor">Hintergrundfarbe:</label>
+            <input type="color" id="bgColor" name="bgColor" value="#D3D3D3">
+            <h3>Ballfarben:</h3>
+            <label for="blueBallColor">Blauer Ball:</label>
+            <input type="color" id="blueBallColor" name="blueBallColor" value="#0000FF">
+            <label for="redBallColor">Roter Ball:</label>
+            <input type="color" id="redBallColor" name="redBallColor" value="#FF0000">
+        </div>
+        <button id="closeOptions" class="button close-button">Schließen</button>
+    </div>
+
+    <div id="stats-menu" style="display: none;">
+        <h2>Statistik</h2>
+        <p id="totalBallsLost">Verlorene Bälle: 0</p>
+        <p id="totalBlueBallsHit">Getroffene blaue Bälle: 0</p>
+        <p id="totalRedBallsHit">Getroffene rote Bälle: 0</p>
+        <p id="totalBallsHit">Getroffene Bälle gesamt: 0</p>
+        <button id="closeStats" class="button close-button">Schließen</button>
+    </div>
+
+    <script src="colors.js"></script>
+    <script src="controls.js"></script>
+    <script src="gameLogic.js"></script>
+    <script src="drawing.js"></script>
+    <script src="collision.js"></script>
+    <script src="options.js"></script>
+    <script src="stats.js"></script>
+    <script src="main.js"></script>
+    <script>
+        // JavaScript to check for mobile device and show warning
+        function isMobileDevice() {
+            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+        }
+
+        window.addEventListener('load', () => {
+            if (isMobileDevice()) {
+                document.getElementById('mobile-warning').style.display = 'block';
+                document.getElementById('game-container').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
